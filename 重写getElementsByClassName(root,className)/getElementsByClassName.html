@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原生实现getElementsByClassName</title>
+		<style>
+			.btn_commit{
+				width:500px;
+				height:200px;
+				display:block;
+			}	
+			.li_fruit{
+				list-style-type:circle;
+			}
+		</style>
+		<script type="text/javascript">
+			function getElementsByClassNameFromTagName(root,className){
+				/*
+				*参数说明：
+				*	1. root 父元素的TagName,可以是‘*’，'body‘等
+				* 	2. className 需要查找的元素必须包含的类名是className
+				* 返回值：
+				* 	返回root下包含className类的所有节点
+				 */
+				if (!(isValidString(root) && isValidString(className))) {
+					//参数校验：两个参数都必须为非空得字符串
+					return null;
+				}
+				var collection=new Array();
+				if(root=="*"){
+					collection=findNodesByClassname(document.getElementsByTagName("*"),className);
+					return collection;
+				}
+				var tagNameList=document.getElementsByTagName(root);
+				getAllChildNodesFromList(collection,tagNameList);//第一个参数为数组
+				var resList=findNodesByClassname(collection,className);
+				// for (var index = 0; index < collection.length; index++) {
+				// 	nodeList=nodeList.concat(findClassnameFormNodes(tagNameList[index].children,className));
+				// };			
+				return resList;
+			}
+			function getElementsByClassNameFromNode(root,className){
+				/*
+				*参数说明：
+				*	1. root 为单个元素
+				* 	2. className 需要查找的元素必须包含的类名是className
+				* 返回值：
+				* 	返回root下包含className类的所有节点
+				 */
+				if (!(isValidNode(root) && isValidString(className))) {
+					//参数校验，传入的root必须是元素节点；className必须为非空的字符串
+					return null;
+				}
+				var collection=new Array();
+				getAllChildNodesFromNode(collection,root);//第一个参数为数组
+				var resList=findNodesByClassname(collection,className);			
+				return resList;
+			}
+			function getElementsByClassNameFromNodeList(root,className){
+				/*
+				*参数说明：
+				*	1. root 为单个元素
+				* 	2. className 需要查找的元素必须包含的类名是className
+				* 返回值：
+				* 	返回root下包含className类的所有节点
+				 */
+				if (!(isValidNodeList(root) && isValidString(className))) {
+					//参数校验，传入的root必须有length属性，是个数组或者NodeList;className必须为非空的字符串
+					return null;
+				}
+				var collection=new Array();
+				collection=getAllChildNodesFromList(collection,root);//第一个参数为数组
+				var resList=findNodesByClassname(collection,className);	
+				return resList;
+			}
+
+			/*私有方法*/
+			function findNodesByClassname(list,className){
+				/*查找数组list中所有的class值包含className的节点*/
+				if (!(isValidNodeList(list) && isValidString(className))) {
+					//参数校验：list 必须为nodelist;className必须为非空字符串
+					return null;
+				}
+				var nodeList=new Array();
+				var regx=new RegExp('\\b'+className+'\\b');//正则可以精确匹配
+				for(var index=0;index<list.length;index++){
+					if(list[index].nodeType!=1){
+						continue;
+					}
+					var node=list[index];
+					var classNameList=node.className;
+					if(classNameList){
+						//数组方式
+						// if(classNameList.indexOf(className)>=0)
+						// 	nodeList.push(list[index]);
+						if(regx.exec(classNameList)){
+							nodeList.push(list[index]);
+						}
+					}
+				}
+				return nodeList;
+			}
+			function getAllChildNodesFromNode(collection,node){
+				//node为单个元素
+				if (!(collection instanceof Array && isValidNode(node))) {
+					//参数校验：collection为数组; node为一个元素节点
+					return null;
+				}
+				collection.push(node);
+				if(!node.hasChildNodes){
+					//如果没有子节点,直接返回node			
+					return collection;
+				}else{
+					var nodeList=node.childNodes;
+					for (var i = 0; i < nodeList.length; i++) {
+						var fatherNode=nodeList[i];
+						if (fatherNode.nodeType!=1) {
+							continue;
+						}
+						getAllChildNodesFromNode(collection,fatherNode);
+					}
+				}
+				return collection;
+			}	
+			function getAllChildNodesFromList(collection,nodeList){
+				/*
+				* 参数说明：
+				* collection  Array类型,存储最后的结果。该元素加上该元素的所有子元素。
+				* nodeList  Array类型，存储父元素结合。
+				 */
+				if (!(collection instanceof Array && isValidNodeList(nodeList))) {
+					//参数校验：collection为数组; node为一个元素节点
+					return collection;
+				}
+				for (var i = 0; i < nodeList.length; i++) {
+					var fatherNode=nodeList[i];
+					if (fatherNode.nodeType!=1) {
+						continue;
+					}
+					collection.push(fatherNode);
+					if (!fatherNode.hasChildNodes()) {
+						//如果没有子元素，则跳过
+						continue;
+					}
+					else{
+						getAllChildNodesFromList(collection,fatherNode.childNodes);
+					}
+				}
+				return collection;
+			}
+			function isValidString(content){
+				//判断是否是有效的string类型
+				if(content==null ||(typeof content!="string")||content=="" ){
+					return false;
+				}
+				return true;
+			}
+			function isValidNode(node){
+				if(node==null || !node.nodeType || node.nodeType !=1){
+					return false;
+				}
+				return true;
+			}
+			function isValidNodeList(nodeList){
+				if(nodeList==null || !nodeList.length || !nodeList[0].nodeType){
+					//存在length属性且不为0
+					return false;
+				}
+				return true;
+			}
+
+			function commitReq(){
+				var root=document.getElementById('root').value;
+				var className=document.getElementById('className').value;
+				var nodeList=getElementsByClassNameFromTagName(root,className);
+				for(var index=0;index<nodeList.length;index++){
+					nodeList[index].innerHTML="I'm catched!"+index;
+				}
+			}
+
+			// function test(){
+			// 	var bd=document.getElementsByTagName('body');
+			// 	var collection=new Array();
+			// 	getAllChildNodes(collection,bd);
+			// 	console.info(collection);
+			// }
+		</script>
+	</head>
+	<body>
+		参数root  <input type="text" id="root" value='ul'/>
+		<br><br> 
+		参数className<input type="text" id="className" value="li_fruit"/>
+		<br><br> 
+		<input type="button" class="btn_commit" value="使用getElementsByClassNameFromTagName" onclick="commitReq();" />
+		<ul id="getme" class="ul_fruit">
+			<li class="li_fruit lalal">tree</li>
+			<li class="li_fruit">watermelon</li>
+			<li class="li_fruit">apple</li>
+			<li class="li_fruit">pearl</li>
+		</ul>
+		
+		<ul>
+			<li class="li_fruit lalal">tree</li>
+			<li class="li_fruit">watermelon</li>
+			<li class="li_fruit">apple</li>
+			<li class="li_fruit">pearl</li>
+		</ul>
+		<div>
+			<ul>
+				<li class=" innerClass ">能找到我嘛<span></span></li>
+			</ul>
+		</div>
+		<div>
+			<ul class=" innerClass ">
+				<li class=" innerClass ">能找到我嘛<span></span></li>
+			</ul>
+		</div>
+	</body>
+</html>
