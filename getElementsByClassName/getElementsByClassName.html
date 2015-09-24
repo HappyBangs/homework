@@ -6,7 +6,7 @@
 		<style>
 			.btn_commit{
 				width:500px;
-				height:200px;
+				height:50px;
 				display:block;
 			}	
 			.li_fruit{
@@ -22,11 +22,11 @@
 				* 返回值：
 				* 	返回root下包含className类的所有节点
 				 */
+				var collection=[];
 				if (!(isValidString(root) && isValidString(className))) {
 					//参数校验：两个参数都必须为非空得字符串
-					return null;
+					return collection;
 				}
-				var collection=new Array();
 				if(root=="*"){
 					collection=findNodesByClassname(document.getElementsByTagName("*"),className);
 					return collection;
@@ -47,11 +47,11 @@
 				* 返回值：
 				* 	返回root下包含className类的所有节点
 				 */
+				var collection=new Array();
 				if (!(isValidNode(root) && isValidString(className))) {
 					//参数校验，传入的root必须是元素节点；className必须为非空的字符串
-					return null;
+					return collection;
 				}
-				var collection=new Array();
 				getAllChildNodesFromNode(collection,root);//第一个参数为数组
 				var resList=findNodesByClassname(collection,className);			
 				return resList;
@@ -64,11 +64,11 @@
 				* 返回值：
 				* 	返回root下包含className类的所有节点
 				 */
+				var collection=new Array();
 				if (!(isValidNodeList(root) && isValidString(className))) {
 					//参数校验，传入的root必须有length属性，是个数组或者NodeList;className必须为非空的字符串
-					return null;
+					return collection;
 				}
-				var collection=new Array();
 				collection=getAllChildNodesFromList(collection,root);//第一个参数为数组
 				var resList=findNodesByClassname(collection,className);	
 				return resList;
@@ -77,12 +77,12 @@
 			/*私有方法*/
 			function findNodesByClassname(list,className){
 				/*查找数组list中所有的class值包含className的节点*/
+				var nodeList=new Array();
 				if (!(isValidNodeList(list) && isValidString(className))) {
 					//参数校验：list 必须为nodelist;className必须为非空字符串
-					return null;
+					return nodeList;
 				}
-				var nodeList=new Array();
-				var regx=new RegExp('\\b'+className+'\\b');//正则可以精确匹配
+				var regx=new RegExp("(^|\\s)" + className + "(\\s|$)");//正则可以精确匹配
 				for(var index=0;index<list.length;index++){
 					if(list[index].nodeType!=1){
 						continue;
@@ -104,7 +104,7 @@
 				//node为单个元素
 				if (!(collection instanceof Array && isValidNode(node))) {
 					//参数校验：collection为数组; node为一个元素节点
-					return null;
+					return collection;
 				}
 				collection.push(node);
 				if(!node.hasChildNodes){
@@ -150,23 +150,17 @@
 			}
 			function isValidString(content){
 				//判断是否是有效的string类型
-				if(content==null ||(typeof content!="string")||content=="" ){
-					return false;
-				}
-				return true;
+				return content && typeof content=="string";//空字符传为空也返回fasle
 			}
 			function isValidNode(node){
-				if(node==null || !node.nodeType || node.nodeType !=1){
-					return false;
-				}
-				return true;
+				return node && node.nodeType==1;//第一个条件必须是node！=null，否则当node为undefined时，返回的是undefined；只有0和空字符串等于false
 			}
 			function isValidNodeList(nodeList){
-				if(nodeList==null || !nodeList.length || !nodeList[0].nodeType){
-					//存在length属性且不为0
-					return false;
-				}
-				return true;
+				// if(nodeList==null || !nodeList.length || !nodeList[0].nodeType){
+				// 	//存在length属性且不为0
+				// 	return false;
+				// }
+				return nodeList && nodeList.length>0;
 			}
 
 			function commitReq(){
@@ -178,12 +172,6 @@
 				}
 			}
 
-			// function test(){
-			// 	var bd=document.getElementsByTagName('body');
-			// 	var collection=new Array();
-			// 	getAllChildNodes(collection,bd);
-			// 	console.info(collection);
-			// }
 		</script>
 	</head>
 	<body>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原生实现loadClass</title>
+		<!-- <link type="text/css" rel="stylesheet" href='loadCss.css'></link> -->
+		<script type="text/javascript">
+			function loadCss(fileName,callbackFunc){
+				/*动态加载css文件*/
+				var node=addCssFile(fileName);
+				if(node){
+					//node.onload=callbackFunc; //其实目前高版本的webkit或firefox都已经支持了，包括手机safari浏览器
+					styleOnload(node,callbackFunc);
+				}	
+			}
+			function callback(){
+				alert("加载成功");
+			}
+			function addCssFile(fileName){
+				//在head中添加css文件
+				if(!isValidString(fileName)){
+					return;
+				}
+				var head=document.getElementsByTagName("head")[0];
+				var container=document.createElement('link');
+				container.href=fileName;
+				container.rel="stylesheet";
+				container.type="text/css";
+				head.appendChild(container);
+				return container;
+			}
+			function styleOnload(node, callback) {
+			    // for IE6-9 and Opera
+			    if(!node || !(callback instanceof Function) ){
+			    	return;
+			    }
+
+			    if (node.attachEvent) {
+			      //处理IE6-9和opera
+			      node.attachEvent('onload', callback);
+			    }
+			    else {
+			      //firefox,chrome,safari走这里
+			      setTimeout(function() {
+			        poll(node, callback);
+			      }, 1); // 延迟一点，保证node节点已经插入
+			    }
+			  }
+			  function poll(node, callback) {
+			   if (callback.isLoaded) {
+			      return;
+			    }
+			    var isLoaded = false;
+			    if (/webkit/i.test(navigator.userAgent)) {//判断是webkit
+			      if (node['sheet']) {
+			        isLoaded = true;
+			      }
+			    }
+			    // for Firefox
+			    else if (node['sheet']) {
+			      try {
+			        if (node['sheet'].cssRules) {
+			          isLoaded = true;
+			        }
+			      } catch (ex) {
+			        // NS_ERROR_DOM_SECURITY_ERR
+			        if (ex.code === 1000) {
+			          isLoaded = true;
+			        }
+			      }
+			    }
+			    if (isLoaded) {
+			      setTimeout(function() {
+			        callback();
+			      }, 1);
+			    }
+			    else {
+			      setTimeout(function() {
+			        poll(node, callback);
+			      }, 1);
+			    }
+			  }
+			function isValidString(content){
+				//判断是否是有效的string类型
+				return content && typeof content=="string";//空字符传为空也返回fasle
+			}
+		</script>
+	</head>
+	<body >
+		<p >动态加载css文件</p>
+		<input type="button" id="btn" onclick="loadCss('loadCss.css',callback)" value="更换css"/>
+	</body>
+</html>
