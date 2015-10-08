@@ -10,7 +10,7 @@ window.onload = function(){
 	if(document.addEventListener){
 		document.addEventListener('DOMMouseScroll',scrollFunc,false);
 	}
-	window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
+	window.onmousewheel=document.onmousewheel=document.onkeydowm=scrollFunc;//IE/Opera/Chrome
 }
 
 function scrollFunc(e){
@@ -31,6 +31,7 @@ function scrollFunc(e){
 	}
 	else if(document.body.scrollTop==0 && document.documentElement.scrollTop==0){
 		//page2在浏览器中，为初始化状态，且滚动条向上滑动
+		console.info(document.body.scrollTop);
 		isForbiddenBodyScroll(true);
 		document.documentElement.scrollTop = document.body.scrollTop =0;
 		page1Div.className =preClass+" toLow";
@@ -70,45 +71,14 @@ function css3AnimateEnd(){
 }
 function isForbiddenBodyScroll(isFbd){
 	//true为禁用，false为不禁用
-	var body2=document.getElementsByTagName("body")[0];
 	if(isFbd){
-		if(document.addEventListener){
-			body2.addEventListener('DOMMouseScroll',firefoxfbd,false);
-		}
-		body2.onmousewheel=function(){
+		document.body.onmousewheel=function(){
 			return false;
 		}
 	}
 	else{
-		if(document.addEventListener){
-			body2.addEventListener('DOMMouseScroll',firefoxop,false);
-		}
-		body2.onmousewheel=function(){
+		document.body.onmousewheel=function(){
 			return true;
 		}
 	}
-}
-function firefoxfbd(evt){
-	evt = evt || window.event;
-	if(evt.preventDefault) {
-	// Firefox
-	  evt.preventDefault();
-	  evt.returnValue = false;  
-	}else{
-	  // IE
-	  evt.cancelBubble=true;
-	  evt.returnValue = false;
- 	}
-}
-function firefoxop(evt){
-	evt = evt || window.event;
-	if(evt.preventDefault) {
-	// Firefox
-	  evt.preventDefault();
-	  evt.returnValue = true;  
-	}else{
-	  // IE
-	  evt.cancelBubble=false;
-	  evt.returnValue = true;
- 	}
 }

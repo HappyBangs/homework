@@ -36,7 +36,16 @@ a {
 .text-center {
   text-align: center
 }
-.nav a:hover {
+.nav-collapse ul li a:hover {
+  color: #3c8fff
+}
+.top-nav-collapse ul li a:hover {
+  color: #5bce9c
+}
+#active1 a{
+  color: #3c8fff
+}
+#active2 a{
   color: #5bce9c
 }
 .clearfix:after {
@@ -108,9 +117,7 @@ a {
 .top-nav-collapse ul li a {
   color: white;
 }
-#active a {
-  color: #5bce9c
-}
+
 #fixBg {
   position: fixed;
   top: 80px;
@@ -316,7 +323,7 @@ a {
   height: 100%;
   position: fixed;
   top: 0;
-  /*display:none;*/
+  background-size: 100% 100%;
 }
 .page1 h1 {
   font-size: 62px;
@@ -345,6 +352,7 @@ a {
   width: 130px;
   height:100px;
   left: 45%;
+  text-align: center;
 }
 #slide-down p{
   position: absolute;
@@ -415,17 +423,18 @@ a {
 }
 @-o-keyframes flipover {
   100% {
-    -webkit-transform:rotateY(360deg); 
+    -o-transform:rotateY(360deg); 
   }
 }
 @keyframes flipover {
   100% {
-    -webkit-transform:rotateY(360deg); 
+    transform:rotateY(360deg); 
+    -ms-transform:rotateY(360deg); 
   }
 }
 @-moz-keyframes flipover {
   100% {
-    -webkit-transform:rotateY(360deg); 
+    -moz-transform:rotateY(360deg); 
   }
 }
 /*page1效果*/
@@ -511,16 +520,7 @@ a {
   }
 }
 
-@-moz-keyframes page1ToLow {
-   0%{
-    opacity: 0;
-    top:-800px;
-  }
-  100% {
-    opacity: 1;
-    top:0px;
-  }
-}
+
 #test :hover{/*如何解决animation是解决所有div而不是当前div的?*/
   -webkit-animation: flipover 5s infinite;
   animation: flipover 5s infinite;
