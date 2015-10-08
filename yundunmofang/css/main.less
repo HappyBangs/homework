@@ -1,0 +1,43 @@
+@nav-font:16px;
+@nav-height:80px;
+@width:100px;
+ul, ol,div {
+    margin: 0;
+    padding:0;
+}
+
+
+.nav{
+	font-size:@nav-font;
+	z-index:1;
+	width: 100%;
+    height: @nav-height;
+    position:fixed;
+    top:0px;
+}
+.nav-container{
+    width: 1140px;
+    margin: 0 auto;
+    position:absolute;
+}
+.nav-collapse{
+	div{
+		position:absolute;
+		right:0px;
+		ul{
+			list-style:none;
+			li{
+				float:left;
+				a{
+				    width: 117px;
+				    height: 47px;
+				    margin-top: 15px;
+				    color: #393939;
+				    text-align: center;
+				    margin-bottom: 15px;
+				    font-size: 16px;
+				}
+			}
+		}
+	}
+}

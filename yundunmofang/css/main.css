@@ -1,0 +1,547 @@
+body {
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333;
+  font-family: "FZLanTingHei", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeitiSC-Light", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  background-color: #3d4796;
+  height: 100%
+}
+ul, ol, div, html, body {
+  margin: 0;
+  padding: 0
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "FZLanTingHei ", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "STHeitiSC-Light", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1
+}
+a {
+  text-decoration: none
+}
+.col-img, .ft-join-btn, #slide-top, .slide-pic-anim, .more-btn {
+  background-image: url("../img/alotoflogo.png");
+}
+.margin-bottom-50 {
+  margin-bottom: 50px
+}
+.footer-color {
+  color: #999fcf
+}
+.font-size-28 {
+  font-size: 28px
+}
+.font-size-16 {
+  font-size: 16px
+}
+.text-center {
+  text-align: center
+}
+.nav a:hover {
+  color: #5bce9c
+}
+.clearfix:after {
+  clear: both
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: " "
+}
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+.nav, .top-nav {
+  font-size: 16px;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+}
+.nav {
+  z-index: 2;
+  background: #fff;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+.nav-header, .top-nav-header {
+  width: 170px;
+  height: 44px;
+  margin-top: 16px;
+  float: left;
+  background: url(../img/logo.png) no-repeat center center;
+}
+.nav-header {
+  background-position: -170px 0;
+}
+.top-nav-header {
+  background-position: 0 0;
+}
+.nav-container {
+  width: 1140px;
+  margin: 0 auto
+}
+.nav-collapse, .top-nav-collapse {
+  float: right;
+}
+.nav-collapse ul, .top-nav-collapse ul {
+  float: right;
+  list-style: none;
+}
+.nav-collapse ul li, .top-nav-collapse  ul li {
+  float: left
+}
+.nav-collapse ul li a, .top-nav-collapse ul li a {
+  display: inline-block;
+  width: 117px;
+  height: 47px;
+  margin-top: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px
+}
+.nav-collapse ul li a {
+  color: #393939;
+}
+.top-nav-collapse ul li a {
+  color: white;
+}
+#active a {
+  color: #5bce9c
+}
+#fixBg {
+  position: fixed;
+  top: 80px;
+  width: 1280px;
+  height: 800px;
+  background: url('../img/ManPic2.png') no-repeat center top;
+  z-index: 0
+}
+.page {
+  width: 1280px;
+}
+.page2 {
+  top: 80px;
+  z-index: 1;
+  position: absolute;
+}
+.intro, .partner, .footer {
+  background-color: #fff
+}
+.workflow {
+  padding-top: 60px;
+  color: white
+}
+.partner {
+  padding-top: 30px;
+  padding-bottom: 140px
+}
+.workflow h4 {
+  margin: 10px auto
+}
+.intro h2 {
+  margin-top: -3px;
+  margin-bottom: 70px;
+  font-size: 50px;
+  text-align: center
+}
+.workflow h2 {
+  margin-top: -3px;
+  margin-bottom: 90px;
+  font-size: 50px;
+  text-align: center;
+  color: white
+}
+.partner h2 {
+  margin-top: -3px;
+  margin-bottom: 90px;
+  font-size: 50px;
+  text-align: center
+}
+.content {
+  padding-top: 60px;
+  padding-bottom: 50px;
+  width: 1140px;
+  margin: 0 auto
+}
+.row {
+  margin-left: -15px;
+  margin-right: -15px
+}
+.col {
+  border: 1px solid #ececec;
+  float: left;
+  width: 30.7%;
+  margin-right: 15px;
+  margin-left: 15px
+}
+.wf-col {
+  padding: 45px 0;
+  border: 1px solid #7e84b9;
+  float: left;
+  width: 23.2%;
+  margin-right: 10px;
+  margin-left: 10px
+}
+.ptn-col {
+  float: left;
+  width: 23.2%;
+  margin-right: 10px;
+  margin-left: 10px
+}
+.col-title {
+  font-size: 25px;
+  font-weight: normal;
+  line-height: 80px;
+  border-bottom: 1px solid #ececec;
+  background: #fff;
+  width: 100%
+}
+.col-ctn {
+  width: 100%;
+  height: 337px;
+  padding-top: 50px
+}
+.treat-img {
+  background-position: -421px -98px
+}
+.treat-img {
+  background-position: -421px -98px
+}
+.info-img {
+  background-position: -631px -437px
+}
+.do-img {
+  background-position: -1133px 0
+}
+.col-img {
+  width: 115px;
+  height: 110px;
+  margin-bottom: 55px;
+  margin-left: auto;
+  margin-right: auto
+}
+.col-des {
+  color: #333;
+  font-size: 16px;
+  padding: 0 45px;
+  text-align: left
+}
+.ptn-logo {
+  display: inline-block;
+  width: 134px;
+  height: 54px;
+  background-image: url("../img/alotoflogo.png")
+}
+.ptn-logo-aliyun {
+  background-position: -544px -131px
+}
+.ptn-logo-aliyun:hover {
+  background-position: -845px -134px
+}
+.ptn-logo-tb {
+  background-position: -1075px -129px
+}
+.ptn-logo-tb:hover {
+  background-position: -1366px -132px
+}
+.ptn-logo-ju {
+  background-position: -767px -1px;
+  width: 114px
+}
+.ptn-logo-ju:hover {
+  background-position: -1014px -1px;
+  width: 114px
+}
+.ptn-logo-tmall {
+  background-position: -1254px 0;
+  width: 215px
+}
+.ptn-logo-tmall:hover{
+  background-position: -1601px 0;
+}
+#footer {
+  background: #4550a7;
+  padding: 40px 0 0px 0;
+  position: relative;
+  color: white
+}
+.ft-content {
+  padding-top: 0;
+  padding-bottom: 30px;
+  width: 1140px;
+  margin: 0 auto
+}
+.ft-join-btn {
+  display: block;
+  width: 215px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 0px;
+  text-indent: -9999px;
+  background-position: -156px -101px;
+  cursor: pointer
+}
+.ft-join-btn :hover{
+  display: block;
+  width: 215px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 0px;
+  text-indent: -9999px;
+  background:none;
+  cursor: pointer
+}
+#slide-top {
+  width: 79px;
+  height: 40px;
+  background-position: -728px -110px;
+  position: absolute;
+  top: -39px;
+  left: 50%;
+  margin-left: -40px
+}
+
+/*顶层图层*/
+.page1 {
+  color: white;
+  background: url("../img/moutain.jpg") no-repeat center center;
+  z-index: 3;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  /*display:none;*/
+}
+.page1 h1 {
+  font-size: 62px;
+  font-weight: 500;
+  margin: 35px 0;
+  margin-top: 120px;
+  padding: 0;
+  color: #FFF;
+}
+.slide-pic-anim {
+  width: 21px;
+  height: 31px;
+  margin: 0 auto;
+  background-position: -1019px -138px;
+  position: absolute;
+  top: 25px;
+  left: 54px;
+  animation: updown 2s infinite;
+  -moz-animation: updown 2s infinite;
+  -webkit-animation: updown 2s infinite;
+  -o-animation: updown 2s infinite;
+}
+#slide-down {
+  position: absolute;
+  bottom: 50px;
+  width: 130px;
+  height:100px;
+  left: 45%;
+}
+#slide-down p{
+  position: absolute;
+  top:50px;
+  width: 130px;
+}
+.more-btn {
+  display: inline-block;
+  margin: 0 auto;
+  width: 260px;
+  height: 79px;
+  text-indent: -9999px;
+  background-position: -221px 0;
+  background-color: transparent;
+  border: 0 none;
+  margin-top: 30px;
+}
+/*动画*/
+@keyframes updown {
+  0% {
+    top: 25px
+  }
+  50% {
+    top: 15px
+  }
+  100% {
+    top: 25px
+  }
+}
+@-moz-keyframes updown {
+  0% {
+    top: 25px
+  }
+  50% {
+    top: 15px
+  }
+  100% {
+    top: 25px
+  }
+}
+@-webkit-keyframes updown {
+  0% {
+    top: 25px;
+  }
+  50% {
+    top: 15px;
+  }
+  100% {
+    top: 25px;
+  }
+}
+@-o-keyframes updown {
+  0% {
+    top: 25px
+  }
+  50% {
+    top: 15px
+  }
+  100% {
+    top: 25px
+  }
+}
+/*公告栏翻转*/
+@-webkit-keyframes flipover {
+  100% {
+    -webkit-transform:rotateY(360deg); 
+  }
+}
+@-o-keyframes flipover {
+  100% {
+    -webkit-transform:rotateY(360deg); 
+  }
+}
+@keyframes flipover {
+  100% {
+    -webkit-transform:rotateY(360deg); 
+  }
+}
+@-moz-keyframes flipover {
+  100% {
+    -webkit-transform:rotateY(360deg); 
+  }
+}
+/*page1效果*/
+@-webkit-keyframes page1ToLow{
+   0%{
+    opacity: 0;
+    top:-800px;
+  }
+  100% {
+    opacity: 1;
+    top:0px;
+  }
+}
+@-o-keyframes page1ToLow {
+  0%{
+    opacity: 0;
+    top:-800px;
+  }
+  100% {
+    opacity: 1;
+    top:0px;
+  }
+}
+@keyframes page1ToLow {
+   0%{
+    opacity: 0;
+    top:-800px;
+  }
+  100% {
+    opacity: 1;
+    top:0px;
+  }
+}
+@-moz-keyframes page1ToLow {
+   0%{
+    opacity: 0;
+    top:-800px;
+  }
+  100% {
+    opacity: 1;
+    top:0px;
+  }
+}
+
+@-webkit-keyframes page1ToHigh{
+   0%{
+    opacity: 1;
+    top:0px;
+  }
+  100% {
+    opacity: 0;
+    top:-800px;
+  }
+}
+@-o-keyframes page1ToHigh{
+  0%{
+    opacity: 1;
+    top:0px;
+  }
+  100% {
+    opacity: 0;
+    top:-800px;
+  }
+}
+@keyframes page1ToHigh {
+  0%{
+    opacity: 1;
+    top:0px;
+  }
+  100% {
+    opacity: 0;
+    top:-800px;
+  }
+}
+@-moz-keyframes page1ToHigh {
+  0%{
+    opacity: 1;
+    top:0px;
+  }
+  100% {
+    opacity: 0;
+    top:-800px;
+  }
+}
+
+@-moz-keyframes page1ToLow {
+   0%{
+    opacity: 0;
+    top:-800px;
+  }
+  100% {
+    opacity: 1;
+    top:0px;
+  }
+}
+#test :hover{/*如何解决animation是解决所有div而不是当前div的?*/
+  -webkit-animation: flipover 5s infinite;
+  animation: flipover 5s infinite;
+  -moz-animation: flipover 5s infinite;
+  -o-animation: flipover 5s infinite;
+}
+.page2ToHigh{
+  -webkit-animation: page2ToHigh 2s 1;
+  animation: page2ToHigh 2s 1;
+  -moz-animation: page2ToHigh 2s 1;
+  -o-animation: page2ToHigh 2s 1;
+}
+.toHigh{
+  -webkit-animation: page1ToHigh 2s 1;
+  animation: page1ToHigh 2s 1;
+  -moz-animation: page1ToHigh 2s 1;
+  -o-animation: page1ToHigh 2s 1;
+}
+.toLow{
+  -webkit-animation: page1ToLow 2s 1;
+  animation: page1ToLow 2s 1;
+  -moz-animation: page1ToLow 2s 1;
+  -o-animation: page1ToLow 2s 1;
+}
